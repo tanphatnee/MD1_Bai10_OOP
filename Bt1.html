@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<style>
+  body{
+    text-align: center;
+  }
+  canvas{
+    border: 1px solid black;
+  }
+</style>
+<input id="dai" type="text" placeholder="Nhập chiều dài"><br>
+<input id="rong" type="text" placeholder="Nhập chiều rộng"><br>
+<button onclick="tinh()" >tinh</button><br>
+<button onclick="reset()">reset</button>
+<p id="ketqua"></p>
+<canvas id="canvas" height="600" width="900"></canvas>
+<script>
+  class Rectangle {
+    dai;
+    rong;
+    constructor(dai, rong) {
+      this.dai = dai;
+      this.rong = rong;
+    }
+    getDai(){
+      return this.dai;
+    }
+    getRong(){
+      return this.rong;
+    }
+    setDai(dai){
+      this.dai=dai;
+    }
+    setRong(rong){
+      this.rong=rong;
+    }
+    getChuVi(){
+      return (this.rong+this.dai)*2;
+    }
+    getDienTich(){
+      return this.dai*this.rong;
+    }
+  } let canvas=document.getElementById('canvas').getContext('2d');
+  function tinh(){
+    let x=+document.getElementById('dai').value;
+    let y=+document.getElementById('rong').value;
+    let Hcn1= new Rectangle(x,y)
+    document.getElementById('ketqua').innerHTML='Diện tích là :'+ Hcn1.getDienTich() + '<br>' + 'Chu vi là: '+ Hcn1.getChuVi();
+    canvas.beginPath();
+    canvas.rect(5,5,y,x);
+    canvas.stroke();
+    canvas.closePath();
+  }
+  function reset() {
+    document.getElementById('dai').value='';
+    document.getElementById('rong').value='';
+    document.getElementById('ketqua').innerHTML='';
+    canvas.clearRect(0,0,900,600);
+  }
+</script>
+</body>
+</html>

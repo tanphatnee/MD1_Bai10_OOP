@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<input type="text" id="doc" min="-273">
+<button onclick="doinhietDo()">đổi</button>
+<p id="doF"></p>
+<p id="doK"></p>
+<script>
+  class Temperature{
+    doC;
+
+    constructor(doC) {
+      this.doC = doC;
+    }
+    changeCtoF(){
+      return this.doC*1.8+32;
+    }
+    changCtoKenvin() {
+      return this.doC+273.15;
+    }
+
+
+
+  }
+  function doinhietDo() {
+    let ValueInput= +document.getElementById('doc').value;
+    let temperature = new Temperature(ValueInput);
+
+
+    if (ValueInput < -273){
+      alert("giá trị nhỏ nhất -273 độ")
+    }
+    else{
+      document.getElementById('doF').innerHTML="độ F là: "+ temperature.changeCtoF();
+      document.getElementById('doK').innerHTML="độ K là "+ temperature.changCtoKenvin();
+
+    }
+  }
+
+</script>
+</body>
+</html>
